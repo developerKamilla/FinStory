@@ -1,0 +1,18 @@
+{
+  "plot_ranker": {
+    "train_rows": 4664,
+    "test_rows": 1144,
+    "test_queries": 26,
+    "top1_rule_label_agreement": 1.0,
+    "baseline_random_top1": 0.023,
+    "label_source": "author-defined compatibility rules; no human quality judgments"
+  },
+  "term_ranker": {
+    "train_rows": 6204,
+    "test_rows": 1540,
+    "test_queries": 70,
+    "top1_rule_label_agreement": 1.0,
+    "baseline_random_top1": 0.045,
+    "label_source": "author-defined compatibility rules; no human quality judgments"
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "zheka",
+    "name": "Жека",
+    "age": 16,
+    "personality": "энергичный, импульсивный, быстро загорается идеями",
+    "natural_interests": ["sport", "gaming", "cars"]
+  },
+  {
+    "id": "lera",
+    "name": "Лера",
+    "age": 17,
+    "personality": "рациональная, любит планировать и сравнивать варианты",
+    "natural_interests": ["music", "travel", "books"]
+  },
+  {
+    "id": "max",
+    "name": "Макс",
+    "age": 16,
+    "personality": "любознательный, техничный, любит разбираться как всё устроено",
+    "natural_interests": ["gaming", "tech", "science"]
+  },
+  {
+    "id": "sonya",
+    "name": "Соня",
+    "age": 16,
+    "personality": "творческая, эмоциональная, замечает детали",
+    "natural_interests": ["music", "movies", "art"]
+  },
+  {
+    "id": "dima",
+    "name": "Дима",
+    "age": 17,
+    "personality": "предприимчивый, любит ставить цели и считать результат",
+    "natural_interests": ["business", "cars", "sport"]
+  },
+  {
+    "id": "anya",
+    "name": "Аня",
+    "age": 17,
+    "personality": "осторожная, наблюдательная, любит анализировать перед решением",
+    "natural_interests": ["books", "travel", "science"]
+  }
+]
