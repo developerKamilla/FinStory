@@ -6,3 +6,13 @@ data/generated.jsonl
 models/terms/
 models/adapter/*.safetensors
 *.zip
+
+.env
+.venv/
+__pycache__/
+*.pyc
+logs/
+models/terms/
+
+assets/.mascot.png.*
+models/adapter/.adapter_model.safetensors.*

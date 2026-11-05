@@ -1,0 +1,10 @@
+{
+  "base_model": "cointegrated/rut5-base-paraphraser",
+  "best_checkpoint": "/content/drive/MyDrive/FinStory_FINAL_training/output/checkpoints/checkpoint-380",
+  "best_validation_loss": 0.8471790552139282,
+  "global_steps": 380,
+  "epochs_completed": 10.0,
+  "adapter_lora_B_norm": 7.217971674132702,
+  "seconds_this_session": 5189,
+  "validation_loss_is_not_human_quality": true
+}

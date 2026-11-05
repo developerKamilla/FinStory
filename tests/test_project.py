@@ -22,6 +22,7 @@ class CourseTests(unittest.TestCase):
         self.assertTrue(set(DICTIONARY).issubset({t for lesson in LESSONS for t in lesson['terms']}))
         for number in range(1, 11):
             self.assertEqual(len(questions(number)), 3)
+            self.assertEqual(len(LESSONS[number-1]['terms']), 1)
             self.assertTrue(all(term in TERMS for term in LESSONS[number-1]['terms']))
         for number in (3, 6, 9):
             self.assertEqual(len(questions(number, True)), 7)

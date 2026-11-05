@@ -15,7 +15,7 @@ def install(archive):
         names = z.namelist()
         config = next((n for n in names if n.endswith('output/model/config.json')), None)
         if config is None:
-            raise ValueError('Нужен тот самый зип с папкой output/model')
+            raise ValueError('Нужен FinStory_trained_model.zip с папкой output/model')
         prefix = config[:-len('config.json')]
         settings = json.loads(z.read(config))
         if settings.get('model_type') != 't5':
@@ -24,7 +24,7 @@ def install(archive):
                  (Path(n).name in ALLOWED or (Path(n).name.startswith('model-') and n.endswith('.safetensors')))
                  and '/' not in n[len(prefix):]]
         if not any(n.endswith('.safetensors') for n in files):
-            raise ValueError('Нет файла весов')
+            raise ValueError('Нет файла весов model.safetensors')
         target.mkdir(parents=True,exist_ok=True)
         for n in files:
             print('Копируем:',Path(n).name,flush=True)
@@ -32,7 +32,7 @@ def install(archive):
             with z.open(n) as source, tmp.open('wb') as dest:
                 shutil.copyfileobj(source,dest,length=1024*1024)
             tmp.replace(target/Path(n).name)
-    print('Готово.',flush=True)
+    print('Готово. Веса установлены в models/terms. Запускай app.py.',flush=True)
 
 
 if __name__=='__main__':
@@ -44,6 +44,7 @@ if __name__=='__main__':
         candidates=list((Path.home()/'Downloads').glob('FinStory_trained_model*.zip'))
         if len(candidates)==1:archive=candidates[0]
     if not archive.is_file():
+        print('Положи FinStory_trained_model.zip рядом с setup_model.py или передай путь к архиву.')
         raise SystemExit(1)
     try:install(archive)
     except (ValueError,zipfile.BadZipFile,OSError) as e:

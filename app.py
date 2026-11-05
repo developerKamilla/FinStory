@@ -140,7 +140,7 @@ class Handler(BaseHTTPRequestHandler):
         elif self.path == '/api/status':
             self.json_response({'mode': 'demo' if os.getenv('FINSTORY_DEMO') == '1' else ('yandex' if StoryAgent().configured else 'needs_env'),
                                 'lessons': len(LESSONS), 'term_backend': TERMS_MODEL.backend,
-                                'trained_terms':list(DICTIONARY), 'cache_version':'course-ten-v1'})
+                                'trained_terms':list(DICTIONARY), 'cache_version':'course-ten-single-v2'})
         else:
             self.send_error(404)
 
