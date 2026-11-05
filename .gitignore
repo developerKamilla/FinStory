@@ -17,3 +17,5 @@ models/terms/
 assets/.mascot.png.*
 models/adapter/.adapter_model.safetensors.*
 *.mov
+~$*
+~WRL*.tmp
