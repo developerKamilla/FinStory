@@ -1,0 +1,50 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      YANDEX_API_KEY: ${YANDEX_API_KEY:-}
+      YANDEX_FOLDER_ID: ${YANDEX_FOLDER_ID:-}
+      FINSTORY_YANDEX_MODEL: ${FINSTORY_YANDEX_MODEL:-aliceai-llm}
+      FINSTORY_DEMO: ${FINSTORY_DEMO:-0}
+      FINSTORY_DAILY_GENERATIONS: ${FINSTORY_DAILY_GENERATIONS:-300}
+      FINSTORY_RECORD_LESSONS: "0"
+    volumes:
+      - type: bind
+        source: ./models/terms
+        target: /app/models/terms
+        read_only: true
+        bind:
+          create_host_path: false
+    read_only: true
+    tmpfs:
+      - /tmp
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://127.0.0.1:8000/healthz', timeout=3).close()"]
+      interval: 30s
+      timeout: 5s
+      start_period: 120s
+      retries: 3
+    logging:
+      driver: local
+
+  proxy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - app
+    environment:
+      FINSTORY_DOMAIN: "${FINSTORY_DOMAIN:?Set FINSTORY_DOMAIN to your domain}"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    logging:
+      driver: local
+
+volumes:
+  caddy_data:
+  caddy_config:

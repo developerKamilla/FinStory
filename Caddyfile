@@ -1,0 +1,24 @@
+{
+	servers {
+		timeouts {
+			read_header 10s
+			read_body 10s
+			write 300s
+		}
+	}
+}
+
+{$FINSTORY_DOMAIN} {
+	encode zstd gzip
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy same-origin
+	}
+	reverse_proxy app:8000 {
+		header_up X-FinStory-Client {remote_host}
+		transport http {
+			response_header_timeout 240s
+		}
+	}
+}

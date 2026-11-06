@@ -16,7 +16,7 @@ def load_env():
             continue
         name, value = line.split('=', 1)
         if name.strip() in ('YANDEX_API_KEY', 'YANDEX_FOLDER_ID', 'FINSTORY_YANDEX_MODEL'):
-            os.environ[name.strip()] = value.strip().strip('"\'')
+            os.environ.setdefault(name.strip(), value.strip().strip('"\''))
 
 
 def safe_hints(story, terms, raw):
